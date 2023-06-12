@@ -1,7 +1,12 @@
+import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_profile/constants.dart';
 import 'package:flutter_profile/responsive.dart';
+import 'package:provider/provider.dart';
 
+import '../../models/app_language_model.dart';
 import 'components/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
@@ -25,6 +30,43 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
             ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(10),
+        child: CustomSlidingSegmentedControl<int>(
+          initialValue: FlutterI18n.currentLocale(context)!.languageCode == 'en' ? 2 : 1,
+          children: {
+            1: Image.asset('assets/images/brazil.png'),
+            2: Image.asset('assets/images/unitedstates.png'),
+          },
+          decoration: BoxDecoration(
+            color: CupertinoColors.lightBackgroundGray,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          thumbDecoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(6),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(.3),
+                blurRadius: 4.0,
+                spreadRadius: 1.0,
+                offset: Offset(
+                  0.0,
+                  2.0,
+                ),
+              ),
+            ],
+          ),
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeInToLinear,
+          onValueChanged: (v) async {
+            await Future.delayed(Duration(milliseconds: 400));
+            final languageProvider = Provider.of<LanguageProvider>(context, listen: false);
+            Locale newLocale = v == 1 ? const Locale('pt') : const Locale('en');
+            languageProvider.setLocale(newLocale);
+          },
+        ),
+      ),
       drawer: SideMenu(),
       body: Center(
         child: Container(

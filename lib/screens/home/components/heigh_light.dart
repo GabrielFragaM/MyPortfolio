@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 import '../../../constants.dart';
 
@@ -9,16 +10,16 @@ class HeighLight extends StatelessWidget {
     this.label,
   }) : super(key: key);
 
-  final Widget counter;
+  final String counter;
   final String? label;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        counter,
+        Text(counter, style: TextStyle(fontSize: 17, color: primaryColor, fontWeight: FontWeight.bold)),
         SizedBox(width: defaultPadding / 2),
-        Text(label!, style: Theme.of(context).textTheme.subtitle2),
+        Text(FlutterI18n.translate(context, label!), style: Theme.of(context).textTheme.subtitle2),
       ],
     );
   }

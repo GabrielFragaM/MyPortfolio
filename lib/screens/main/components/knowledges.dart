@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import '../../../constants.dart';
 
 class Knowledges extends StatelessWidget {
@@ -16,7 +17,7 @@ class Knowledges extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               vertical: defaultPadding),
           child: Text(
-            "Knowledges",
+            FlutterI18n.translate(context, "Knowledges"),
             style: Theme.of(context).textTheme.subtitle2,
           ),
         ),
@@ -53,7 +54,7 @@ class KnowledgeText extends StatelessWidget {
         children: [
           Icon(Icons.check, color: primaryColor),
           SizedBox(width: defaultPadding / 2),
-          Text(text),
+          Text(FlutterI18n.translate(context, text)),
         ],
       ),
     );

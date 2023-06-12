@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_profile/models/Project.dart';
 import 'package:flutter_profile/responsive.dart';
 
@@ -18,7 +19,7 @@ class MyProjects extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "My Projects",
+            FlutterI18n.translate(context, "My Projects"),
             style: Theme.of(context).textTheme.headline6,
           ),
           const SizedBox(height: defaultPadding),

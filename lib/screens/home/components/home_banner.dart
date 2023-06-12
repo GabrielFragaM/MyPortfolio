@@ -1,10 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_profile/responsive.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:widget_and_text_animator/widget_and_text_animator.dart';
-
 import '../../../constants.dart';
 
 class HomeBanner extends StatelessWidget {
@@ -30,21 +29,17 @@ class HomeBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextAnimatorSequence(
-                  children: [
-                    TextAnimator(
-                      "Welcome to my universe of code!",
-                      style: Responsive.isDesktop(context)
-                          ? Theme.of(context).textTheme.headline3!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ) : TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
+                Text(
+                  FlutterI18n.translate(context, "Welcome to my universe of code!"),
+                  style: Responsive.isDesktop(context)
+                      ? Theme.of(context).textTheme.headline3!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ) : TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
                 if (Responsive.isMobileLarge(context))
                   const SizedBox(height: defaultPadding / 2),
@@ -73,7 +68,7 @@ class HomeBanner extends StatelessWidget {
                       backgroundColor: primaryColor,
                     ),
                     child: Text(
-                      "Contact me",
+                      FlutterI18n.translate(context, "Contact me"),
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -133,7 +128,7 @@ class MyBuildAnimatedText extends StatelessWidget {
           if (!Responsive.isMobileLarge(context)) FlutterCodedText(),
           if (!Responsive.isMobileLarge(context))
             SizedBox(width: defaultPadding / 2),
-          Text("Development ", style: TextStyle(fontSize:  !Responsive.isMobileLarge(context) ? 16 : 11),),
+          Text(FlutterI18n.translate(context, "Development "), style: TextStyle(fontSize:  !Responsive.isMobileLarge(context) ? 16 : 11),),
           Responsive.isMobile(context)
               ? Expanded(child: AnimatedText())
               : AnimatedText(),
@@ -156,17 +151,17 @@ class AnimatedText extends StatelessWidget {
     return AnimatedTextKit(
       animatedTexts: [
         TyperAnimatedText(
-          "of complex applications.",
+          "of complex applications",
           speed: Duration(milliseconds: 60),
           textStyle: TextStyle(fontSize: !Responsive.isMobileLarge(context) ? 16 : 11)
         ),
         TyperAnimatedText(
-          "of multilingual systems such as Japanese, English.",
+          "of multilingual systems such as Japanese, English",
           speed: Duration(milliseconds: 60),
             textStyle: TextStyle(fontSize: !Responsive.isMobileLarge(context) ? 16 : 11)
         ),
         TyperAnimatedText(
-          "of web, iOS, and Android platforms.",
+          "of web iOS and Android platforms",
           speed: Duration(milliseconds: 60),
             textStyle: TextStyle(fontSize: !Responsive.isMobileLarge(context) ? 16 : 11)
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_profile/constants.dart';
 import 'area_info_text.dart';
 import 'knowledges.dart';
@@ -23,15 +24,15 @@ class SideMenu extends StatelessWidget {
                 child: Column(
                   children: [
                     AreaInfoText(
-                      title: "Residence",
+                      title: FlutterI18n.translate(context, "Residence"),
                       text: "Brazil",
                     ),
                     AreaInfoText(
-                      title: "City",
+                      title: FlutterI18n.translate(context, "City"),
                       text: "Canoas",
                     ),
                     AreaInfoText(
-                      title: "Age",
+                      title: FlutterI18n.translate(context, "Age"),
                       text: "21",
                     ),
                     Knowledges(),

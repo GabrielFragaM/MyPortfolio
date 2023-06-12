@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_profile/models/Project.dart';
 import 'package:flutter_profile/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -41,7 +42,7 @@ class ProjectCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                project.title!,
+                FlutterI18n.translate(context, project.title!),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontSize: Responsive.isMobileLarge(context) ? 11 : 15, color: Colors.white),
@@ -56,7 +57,7 @@ class ProjectCard extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    "Show Project",
+                    FlutterI18n.translate(context, "Show Project"),
                     style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -65,7 +66,7 @@ class ProjectCard extends StatelessWidget {
           ),
           Spacer(),
           Text(
-            project.description!,
+            FlutterI18n.translate(context, project.description!),
             maxLines: Responsive.isMobileLarge(context) ? 3 : 4,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: Responsive.isMobileLarge(context) ? 11 : 13),

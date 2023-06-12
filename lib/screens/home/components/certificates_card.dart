@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../constants.dart';
 import '../../../models/Certificate.dart';
@@ -55,7 +56,7 @@ class CertificatesCard extends StatelessWidget {
             ],
           ),
           Text(
-            certificate.text!,
+            FlutterI18n.translate(context, certificate.text!),
             maxLines: 4,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: Responsive.isMobileLarge(context) ? 11 : 13),
@@ -68,7 +69,7 @@ class CertificatesCard extends StatelessWidget {
               );
             },
             child: Text(
-              "Show Certificate",
+              FlutterI18n.translate(context, "Show Certificate"),
               style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
             ),
           ),

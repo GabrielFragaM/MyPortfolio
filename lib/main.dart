@@ -1,15 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_profile/screens/home/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'constants.dart';
+import 'models/app_language_model.dart';
 
 void main() async {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => LanguageProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Gabriel Fraga',
@@ -24,6 +42,9 @@ class MyApp extends StatelessWidget {
               bodyText2: TextStyle(color: bodyTextColor),
             ),
       ),
+      locale: languageProvider.locale,
+      supportedLocales: languageProvider.supportedLocales,
+      localizationsDelegates: languageProvider.localizationsDelegates(fallbackFile: languageProvider.fallbackFile, locale: languageProvider.locale),
       home: HomeScreen(),
     );
   }

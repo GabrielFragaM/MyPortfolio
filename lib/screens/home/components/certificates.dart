@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_profile/screens/home/components/certificates_card.dart';
 import 'package:infinite_carousel/infinite_carousel.dart';
 import '../../../constants.dart';
@@ -44,7 +45,7 @@ class _CertificatesState extends State<Certificates> {
               Row(
                 children: [
                   Text(
-                    "Certificates",
+                    FlutterI18n.translate(context, "Certificates"),
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   const SizedBox(width: 25,),
