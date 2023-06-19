@@ -1,7 +1,6 @@
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_profile/constants.dart';
 import 'package:flutter_profile/responsive.dart';
 import 'package:provider/provider.dart';
@@ -33,15 +32,16 @@ class MainScreen extends StatelessWidget {
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(10),
         child: CustomSlidingSegmentedControl<int>(
-          initialValue: FlutterI18n.currentLocale(context)!.languageCode == 'en' ? 2 : 1,
+          initialValue: 1,
           children: {
-            1: Image.asset('assets/images/brazil.png'),
-            2: Image.asset('assets/images/unitedstates.png'),
+            1: Image.asset('assets/images/unitedstates.png'),
+            2: Image.asset('assets/images/brazil.png'),
           },
           decoration: BoxDecoration(
             color: CupertinoColors.lightBackgroundGray,
             borderRadius: BorderRadius.circular(8),
           ),
+          fixedWidth: 60,
           thumbDecoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(6),
@@ -57,12 +57,12 @@ class MainScreen extends StatelessWidget {
               ),
             ],
           ),
-          duration: Duration(milliseconds: 300),
+          duration: Duration(milliseconds: 200),
           curve: Curves.easeInToLinear,
           onValueChanged: (v) async {
-            await Future.delayed(Duration(milliseconds: 400));
+            await Future.delayed(Duration(milliseconds: 300));
             final languageProvider = Provider.of<LanguageProvider>(context, listen: false);
-            Locale newLocale = v == 1 ? const Locale('pt') : const Locale('en');
+            Locale newLocale = v == 2 ? const Locale('pt') : const Locale('en');
             languageProvider.setLocale(newLocale);
           },
         ),

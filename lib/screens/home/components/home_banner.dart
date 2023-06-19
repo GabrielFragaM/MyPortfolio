@@ -151,17 +151,17 @@ class AnimatedText extends StatelessWidget {
     return AnimatedTextKit(
       animatedTexts: [
         TyperAnimatedText(
-          "of complex applications",
+            FlutterI18n.translate(context, "of complex applications"),
           speed: Duration(milliseconds: 60),
           textStyle: TextStyle(fontSize: !Responsive.isMobileLarge(context) ? 16 : 11)
         ),
         TyperAnimatedText(
-          "of multilingual systems such as Japanese, English",
+            FlutterI18n.translate(context, "of multilingual systems such as Japanese, English"),
           speed: Duration(milliseconds: 60),
             textStyle: TextStyle(fontSize: !Responsive.isMobileLarge(context) ? 16 : 11)
         ),
         TyperAnimatedText(
-          "of web iOS and Android platforms",
+          FlutterI18n.translate(context, "of web iOS and Android platforms"),
           speed: Duration(milliseconds: 60),
             textStyle: TextStyle(fontSize: !Responsive.isMobileLarge(context) ? 16 : 11)
         ),
